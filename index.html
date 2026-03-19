@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Appraisal - Edwin Farr, Certified Residential Appraiser</title>
-    <meta http-equiv="refresh" content="8;url=https://edwinfarr.appraiserxsites.com/?win=_blank">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -49,17 +48,26 @@
             text-decoration: none;
         }
         .contact a:hover { text-decoration: underline; }
-        .redirect-notice {
-            font-size: 0.95rem;
-            color: #4a7a3a;
-            margin-bottom: 2.5rem;
-        }
-        .redirect-notice a {
-            color: #2d5a1e;
+        .agree-btn {
+            display: inline-block;
+            background: #2d5a1e;
+            color: #fff;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.2rem;
             font-weight: bold;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
             text-decoration: none;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            transition: background 0.2s;
         }
-        .redirect-notice a:hover { text-decoration: underline; }
+        .agree-btn:hover {
+            background: #3d7a2e;
+        }
         hr {
             border: none;
             border-top: 1px solid #b5d6a7;
@@ -97,11 +105,6 @@
             Mebane, North Carolina
         </div>
 
-        <p class="redirect-notice">
-            Redirecting to our full site&hellip;<br>
-            <a href="https://edwinfarr.appraiserxsites.com/?win=_blank">Click here</a> if not redirected automatically.
-        </p>
-
         <hr>
 
         <div class="sms-policy">
@@ -130,6 +133,8 @@
                 to opt out.
             </p>
         </div>
+
+        <a href="https://edwinfarr.appraiserxsites.com/?win=_blank" class="agree-btn">I AGREE</a>
     </div>
 </body>
 </html>
