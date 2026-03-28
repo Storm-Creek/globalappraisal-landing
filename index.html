@@ -68,6 +68,18 @@
         .agree-btn:hover {
             background: #3d7a2e;
         }
+        .confirmed {
+            display: none;
+            background: #eaf5e4;
+            border: 1px solid #b5d6a7;
+            border-radius: 6px;
+            padding: 1.25rem 2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            color: #2d5a1e;
+            font-weight: bold;
+        }
         hr {
             border: none;
             border-top: 1px solid #b5d6a7;
@@ -134,7 +146,16 @@
             </p>
         </div>
 
-        <a href="https://edwinfarr.appraiserxsites.com/?win=_blank" class="agree-btn">I AGREE</a>
+        <button class="agree-btn" id="agreeBtn" onclick="handleAgree()">I AGREE</button>
+        <div class="confirmed" id="confirmed">
+            &#10003; Thank you. Your consent has been recorded.
+        </div>
     </div>
+    <script>
+        function handleAgree() {
+            document.getElementById('agreeBtn').style.display = 'none';
+            document.getElementById('confirmed').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
