@@ -48,38 +48,6 @@
             text-decoration: none;
         }
         .contact a:hover { text-decoration: underline; }
-        .agree-btn {
-            display: inline-block;
-            background: #2d5a1e;
-            color: #fff;
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
-            transition: background 0.2s;
-        }
-        .agree-btn:hover {
-            background: #3d7a2e;
-        }
-        .confirmed {
-            display: none;
-            background: #eaf5e4;
-            border: 1px solid #b5d6a7;
-            border-radius: 6px;
-            padding: 1.25rem 2rem;
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
-            font-size: 1rem;
-            color: #2d5a1e;
-            font-weight: bold;
-        }
         hr {
             border: none;
             border-top: 1px solid #b5d6a7;
@@ -88,12 +56,12 @@
         }
         .sms-policy {
             text-align: left;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #4a6a3a;
             line-height: 1.7;
         }
         .sms-policy h2 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #2d5a1e;
             margin-bottom: 0.75rem;
             text-align: center;
@@ -103,6 +71,101 @@
             margin-bottom: 0.75rem;
         }
         .sms-policy li { margin-bottom: 0.35rem; }
+        .sms-policy p { margin-bottom: 0.75rem; }
+        .consent-form {
+            text-align: left;
+            background: #ffffff;
+            border: 1px solid #b5d6a7;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .consent-form h3 {
+            font-size: 1rem;
+            color: #2d5a1e;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .form-row { margin-bottom: 1rem; }
+        .form-row label {
+            display: block;
+            font-size: 0.9rem;
+            color: #2d5a1e;
+            margin-bottom: 0.35rem;
+        }
+        .form-row input[type="text"],
+        .form-row input[type="tel"],
+        .form-row input[type="email"] {
+            width: 100%;
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #b5d6a7;
+            border-radius: 4px;
+            background: #f9fdf7;
+        }
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+        .checkbox-row input[type="checkbox"] {
+            margin-top: 0.25rem;
+            transform: scale(1.2);
+        }
+        .agree-btn {
+            display: block;
+            width: 100%;
+            background: #2d5a1e;
+            color: #fff;
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.85rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            transition: background 0.2s;
+        }
+        .agree-btn:hover:not(:disabled) { background: #3d7a2e; }
+        .agree-btn:disabled {
+            background: #9bb591;
+            cursor: not-allowed;
+        }
+        .confirmed {
+            display: none;
+            background: #eaf5e4;
+            border: 1px solid #b5d6a7;
+            border-radius: 6px;
+            padding: 1.25rem 2rem;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            color: #2d5a1e;
+            font-weight: bold;
+            text-align: center;
+        }
+        .footer-links {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #4a7a3a;
+        }
+        .footer-links a {
+            color: #2d5a1e;
+            margin: 0 0.5rem;
+        }
+        .source-note {
+            background: #eaf5e4;
+            border-left: 3px solid #2d5a1e;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            color: #2d5a1e;
+        }
     </style>
 </head>
 <body>
@@ -124,46 +187,101 @@
             <h2>SMS Communications Policy</h2>
             <p>
                 Global Appraisal LLC sends text messages from
-                <strong>(984) 360-8050</strong> to property owners, their
-                representatives, and real estate agents for the purpose of
-                scheduling and confirming real estate appraisal inspections.
+                <strong>(984) 360-8050</strong> for the purpose of scheduling
+                and confirming real estate appraisal inspections.
             </p>
             <ul>
                 <li>Messages are limited to appointment scheduling, confirmation, reminders, and coordination.</li>
                 <li>Message frequency varies; typically 1&ndash;5 messages per appraisal engagement.</li>
                 <li>Message and data rates may apply.</li>
                 <li>No marketing or promotional messages are sent.</li>
+                <li>Reply <strong>STOP</strong> to opt out. Reply <strong>HELP</strong> for assistance.</li>
             </ul>
+
+            <div class="source-note">
+                <strong>How we get your number:</strong> You enter your own
+                mobile number in the form below and check the consent box.
+                Global Appraisal does not import phone numbers from lenders,
+                AMCs, or other third parties for SMS purposes. Mobile opt-in
+                data is never shared with third parties or affiliates.
+            </div>
+
             <p>
-                <strong>Consent:</strong> Click the <strong>I AGREE</strong>
-                button below to consent to receive appointment-related text
-                messages from Global Appraisal LLC at the phone number you
-                provided as part of an active appraisal engagement.
+                See our <a href="privacy.html">Privacy Policy</a> and
+                <a href="terms.html">Terms of Service</a> for full details
+                before consenting.
             </p>
-            <p>
-                <strong>Opt-out:</strong> Reply <strong>STOP</strong> to any
-                message to unsubscribe. Reply <strong>HELP</strong> for
-                assistance. You may also call
-                <a href="tel:9842970185">(984) 297-0185</a> or email
-                <a href="mailto:edwin@globalappraisal.net">edwin@globalappraisal.net</a>
-                to opt out.
-            </p>
-            <p>
-                No mobile information will be shared with third parties or
-                affiliates for marketing or promotional purposes. All categories
-                exclude text messaging originator opt-in data and consent;
-                this information will not be shared with any third parties.
-            </p>
+
+            <form class="consent-form" id="consentForm"
+                  action="https://formsubmit.co/edwin@globalappraisal.net"
+                  method="POST">
+                <h3>SMS Consent Form</h3>
+
+                <input type="hidden" name="_subject" value="New SMS consent submission - globalappraisal.net">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://globalappraisal.net/?consent=recorded">
+
+                <div class="form-row">
+                    <label for="full_name">Your full name</label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="phone">Your mobile number (the one you want to receive texts at)</label>
+                    <input type="tel" id="phone" name="phone"
+                           pattern="[0-9\-\(\) \+]{10,20}"
+                           placeholder="(919) 555-0123" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Your email (optional, for our records)</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="form-row">
+                    <label for="property">Property address being appraised (optional)</label>
+                    <input type="text" id="property" name="property">
+                </div>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="consent" name="consent"
+                           value="I_AGREE" required>
+                    <label for="consent">
+                        I agree to receive appointment-related SMS text
+                        messages from Global Appraisal LLC at the mobile
+                        number I entered above, sent from (984) 360-8050.
+                        I understand message and data rates may apply, that
+                        message frequency is typically 1&ndash;5 per
+                        appraisal, that I may reply STOP to opt out at any
+                        time, and that consent is not a condition of any
+                        purchase or service. I have read the
+                        <a href="privacy.html">Privacy Policy</a> and
+                        <a href="terms.html">Terms of Service</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="agree-btn" id="submitBtn">
+                    Submit Consent
+                </button>
+            </form>
+
+            <div class="confirmed" id="confirmed">
+                &#10003; Thank you. Your consent has been recorded.
+            </div>
         </div>
 
-        <button class="agree-btn" id="agreeBtn" onclick="handleAgree()">I AGREE</button>
-        <div class="confirmed" id="confirmed">
-            &#10003; Thank you. Your consent has been recorded.
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a> &middot;
+            <a href="terms.html">Terms of Service</a>
         </div>
     </div>
+
     <script>
-        function handleAgree() {
-            document.getElementById('agreeBtn').style.display = 'none';
+        // If user lands here with ?consent=recorded after FormSubmit redirect,
+        // hide the form and show confirmation.
+        if (window.location.search.indexOf('consent=recorded') !== -1) {
+            document.getElementById('consentForm').style.display = 'none';
             document.getElementById('confirmed').style.display = 'block';
         }
     </script>
