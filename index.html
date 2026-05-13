@@ -332,6 +332,19 @@
                 return;
             }
 
+            function showError() {
+                btn.disabled = false;
+                btn.textContent = 'Submit';
+                var msg = document.getElementById('submitError');
+                if (!msg) {
+                    msg = document.createElement('p');
+                    msg.id = 'submitError';
+                    msg.style.cssText = 'color:#a02020;margin-top:1rem;font-weight:bold;';
+                    msg.textContent = 'Sorry, the form could not be submitted. Please call (919) 328-0141 or email edwin@globalappraisal.net.';
+                    btn.parentNode.insertBefore(msg, btn.nextSibling);
+                }
+            }
+
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 btn.disabled = true;
@@ -342,17 +355,12 @@
                     headers: { 'Accept': 'application/json' },
                     body: data,
                 }).then(function (r) {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
                     return r.json().catch(function () { return {}; });
-                }).then(function (j) {
+                }).then(function () {
                     showThanks();
                 }).catch(function () {
-                    // Network/blocked: fall back to a normal form post so the
-                    // user still has a path to submit. FormSubmit will render
-                    // its own thank-you page in that case.
-                    btn.disabled = false;
-                    btn.textContent = 'Submit';
-                    form.removeEventListener('submit', arguments.callee);
-                    form.submit();
+                    showError();
                 });
             });
         })();
