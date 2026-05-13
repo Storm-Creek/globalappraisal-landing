@@ -233,7 +233,6 @@
                 <input type="hidden" name="_subject" value="New consent / contact submission - globalappraisal.net">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://globalappraisal.net/?consent=recorded">
 
                 <div class="form-row">
                     <label for="full_name">Your full name</label>
@@ -311,12 +310,52 @@
     </div>
 
     <script>
-        // If user lands here with ?consent=recorded after FormSubmit redirect,
-        // hide the form and show confirmation.
-        if (window.location.search.indexOf('consent=recorded') !== -1) {
-            document.getElementById('consentForm').style.display = 'none';
-            document.getElementById('confirmed').style.display = 'block';
-        }
+        // Submit via AJAX so the user stays on the page and the inline
+        // "Thank you" confirmation shows immediately — no cross-origin
+        // 302 redirect, no chance of a strict HTTP client tripping over a
+        // POST-preserved redirect to a static host that rejects POST.
+        (function () {
+            var form = document.getElementById('consentForm');
+            var confirmed = document.getElementById('confirmed');
+            var btn = document.getElementById('submitBtn');
+            if (!form) return;
+
+            function showThanks() {
+                form.style.display = 'none';
+                confirmed.style.display = 'block';
+                confirmed.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Legacy query-param fallback (in case anyone still has the old link).
+            if (window.location.search.indexOf('consent=recorded') !== -1) {
+                showThanks();
+                return;
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                btn.disabled = true;
+                btn.textContent = 'Submitting...';
+                var data = new FormData(form);
+                fetch('https://formsubmit.co/ajax/bd376fa6da641cffee96c2d33949cc83', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: data,
+                }).then(function (r) {
+                    return r.json().catch(function () { return {}; });
+                }).then(function (j) {
+                    showThanks();
+                }).catch(function () {
+                    // Network/blocked: fall back to a normal form post so the
+                    // user still has a path to submit. FormSubmit will render
+                    // its own thank-you page in that case.
+                    btn.disabled = false;
+                    btn.textContent = 'Submit';
+                    form.removeEventListener('submit', arguments.callee);
+                    form.submit();
+                });
+            });
+        })();
     </script>
 </body>
 </html>
